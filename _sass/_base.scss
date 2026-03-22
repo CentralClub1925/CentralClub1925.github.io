@@ -243,3 +243,23 @@ body:has(.post) a:hover * {
   height: auto;
   display: inline-block; 
 }
+
+
+/* ==========================================
+   标题大小与行距微调
+   ========================================== */
+
+/* 1. 调整主标题：“调查科档案室” */
+.site-masthead h1 {
+  font-size: 42px !important; /* 调整这里的数字改变大小，原来大概是60px左右 */
+  margin-bottom: 10px !important; /* 控制它和下方“绝密”之间的行距 */
+  letter-spacing: 4px !important; /* 稍微拉开一点字间距，更有复古感 */
+}
+
+/* 2. 调整副标题：“◆ 绝密 ◆” */
+.site-masthead h2 {
+  font-size: 22px !important; /* 调整“绝密”字样的大小 */
+  margin-top: 0 !important; /* 抹平顶部多余的空隙 */
+  margin-bottom: 50px !important; /* 控制它和下方“Contents”的距离 */
+  letter-spacing: 6px !important; /* 让绝密的菱形和字稍微拉开一点 */
+}
