@@ -24,6 +24,10 @@ layout: default
 
 <main class="home" id="main" role="main" aria-label="Content">
 
+<div class="site-emblem-container">
+  <img src="{{ '/assets/images/kmt-emblem.PNG' | relative_url }}" alt="Emblem" class="site-emblem">
+</div>
+  
   <h1 class="content-title divided">
     {% if site.paginate and site.paginate_path and paginator.page > 1 %}
       Page {{ paginator.page }}
