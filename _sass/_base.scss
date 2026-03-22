@@ -208,3 +208,11 @@ a:hover, .post-list li a:hover {
   transform: rotate(-6deg);  /* 灵魂微调：模拟手工盖章时手抖的倾斜感！ */
   box-shadow: 0 0 3px rgba(155, 28, 38, 0.4); /* 微微的印泥晕染效果 */
 }
+
+/* 5. 修复补丁：强制首页档案目录保持铅字黑 */
+ul.post-list h1, 
+ul.post-list h2, 
+ul.post-list h3, 
+.post-link {
+  color: #2A2A2A !important; 
+}
