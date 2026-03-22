@@ -178,15 +178,20 @@ h1, h2, h3, h4, .site-title {
   font-weight: bold;
 }
 
-/* 3. 朱砂红悬停特效 (交互感) */
-a:hover {
-  color: #9B1C26 !important;
-  text-decoration: underline;
+/* 3. 朱砂红悬停特效 */
+a, a:link, a:visited, .post-list li a {
+  color: #2A2A2A !important; /* 强制所有链接统一为铅字黑 */
+  text-decoration: none !important; /* 默认去掉下划线，保持干净 */
+  transition: all 0.3s ease; /* 增加变色时的平滑过渡感 */
+}
+
+a:hover, .post-list li a:hover {
+  color: #9B1C26 !important; /* 鼠标悬停变朱砂红 */
 }
 
 /* 4. 终极绝活：文章末尾自动加盖【党务调查科印】 */
 .post-content::after {
-  content: "党务调查科印";
+  content: "黨務調查科印";
   display: block;
   writing-mode: vertical-rl; /* 真正的灵魂：汉字竖排显示！ */
   color: #9B1C26;            /* 朱砂红印泥色 */
