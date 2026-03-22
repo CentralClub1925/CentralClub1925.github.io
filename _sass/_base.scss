@@ -162,60 +162,57 @@ figcaption {
 
 
 /* ==========================================
-   中央俱乐部 1925 - 卷宗内外双重视觉系统
+   中央俱乐部 1925 - 卷宗内外双重视觉系统 (V2修复版)
    ========================================== */
 
-/* --- 1. 首页外壳：深蓝底 + 纯白字 --- */
-body {
-  background-image: none !important; /* 封面不需要宣纸纹理 */
-}
-h1, h2, h3, h4, .site-title, a, p, span, .post-meta {
-  color: #fffffe !important; /* 强制封面所有元素为白色 */
+/* --- 1. 全局默认 (首页外壳)：深蓝底 + 纯白字 --- */
+/* 同时锁死 html 和 body，防止蓝边漏底 */
+html, body {
+  background-color: #094067 !important;
+  background-image: none !important;
 }
 
-/* --- 2. 悬停警示：朱砂红 (内外全局通用) --- */
-a:hover, .post-list li a:hover {
+/* 一刀切：让首页的所有元素都变成纯白色 */
+body * {
+  color: #fffffe !important; 
+}
+
+/* --- 2. 悬停警示：朱砂红波浪线 --- */
+body a:hover {
   color: #9B1C26 !important;
 }
 
 /* --- 3. 翻开卷宗 (内页专供)：宣纸 + 铅字黑 --- */
-/* 当网页探测到内部有 .post-header (文章头) 时，自动切换为内页模式 */
-body:has(.post-header) {
+/* 当探测到 .post (文章) 时，强制全屏铺满宣纸 */
+html:has(.post), 
+body:has(.post) {
   background-color: #F7F5F0 !important;
   background-image: url("https://www.transparenttextures.com/patterns/rice-paper.png") !important;
 }
 
-/* 内页的所有文字切换为铅字灰黑 */
-body:has(.post-header) h1, 
-body:has(.post-header) h2, 
-body:has(.post-header) h3, 
-body:has(.post-header) h4, 
-body:has(.post-header) .site-title, 
-body:has(.post-header) a, 
-body:has(.post-header) p, 
-body:has(.post-header) span,
-body:has(.post-header) .post-meta,
-body:has(.post-header) li {
+/* 一刀切：让内页的所有文字强制变回铅字灰黑 */
+body:has(.post) * {
   color: #2A2A2A !important;
 }
 
-/* 确保内页的悬停依然是朱砂红，不被上面覆盖 */
-body:has(.post-header) a:hover {
+/* --- 4. 保护红色印记 --- */
+/* 确保内页鼠标划过链接时，依然是红色 */
+body:has(.post) a:hover {
   color: #9B1C26 !important;
 }
 
-/* --- 4. 自动盖章：文章末尾的繁体印章 (仅内页生效) --- */
+/* 自动盖章：文章末尾的繁体印章 */
 .post-content::after {
   content: "黨務調查科印";
   display: block;
   writing-mode: vertical-rl;
-  color: #9B1C26;
-  font-family: "STKaiti", "Kaiti", "BiauKai", serif; /* 繁体楷书模拟雕刻 */
+  color: #9B1C26 !important; /* 强制血红色，绝不能被上面的黑色覆盖 */
+  font-family: "STKaiti", "Kaiti", "BiauKai", serif;
   font-size: 20px;
   font-weight: bold;
   letter-spacing: 4px;
   padding: 8px 12px;
-  border: 4px solid #9B1C26;
+  border: 4px solid #9B1C26 !important; /* 强制红色边框 */
   border-radius: 4px;
   margin: 60px 0 20px auto;
   width: fit-content;
