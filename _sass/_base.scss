@@ -234,7 +234,7 @@ body:has(.post) a:hover * {
 /* 让徽章容器居中，并给下方标题腾出空间 */
 .site-emblem-container {
   text-align: center;
-  margin-bottom: 10px; 
+  margin-bottom: 10px; !important;
 }
 
 /* 锁定徽章的尺寸，防止太大 */
@@ -252,6 +252,7 @@ body:has(.post) a:hover * {
 /* 1. 调整主标题：“调查科档案室” */
 .site-masthead h1 {
   font-size: 70px !important; /* 调整这里的数字改变大小，原来大概是60px左右 */
+  margin-top: 0 !important;
   margin-bottom: 10px !important; /* 控制它和下方“绝密”之间的行距 */
   letter-spacing: 4px !important; /* 稍微拉开一点字间距，更有复古感 */
 }
