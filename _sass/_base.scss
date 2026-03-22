@@ -162,57 +162,64 @@ figcaption {
 
 
 /* ==========================================
-   中央俱乐部 1925 - 绝密档案视觉补丁
+   中央俱乐部 1925 - 卷宗内外双重视觉系统
    ========================================== */
 
-/* 1. 宣纸/旧牛皮纸纹理背景 */
+/* --- 1. 首页外壳：深蓝底 + 纯白字 --- */
 body {
-  /* 在我们之前设置的米白色基础上，叠加一层半透明的复古纸张噪点 */
-  background-image: url("https://www.transparenttextures.com/patterns/rice-paper.png");
-  background-attachment: fixed;
+  background-image: none !important; /* 封面不需要宣纸纹理 */
+}
+h1, h2, h3, h4, .site-title, a, p, span, .post-meta {
+  color: #fffffe !important; /* 强制封面所有元素为白色 */
 }
 
-/* 2. 深藏青色大标题 & 导航栏 */
-h1, h2, h3, h4, .site-title {
-  color: #002B6E !important; /* 强制覆盖为青天白日蓝 */
-  font-weight: bold;
-}
-
-/* 3. 朱砂红悬停特效 */
-a, a:link, a:visited, .post-list li a {
-  color: #2A2A2A !important; /* 强制所有链接统一为铅字黑 */
-  text-decoration: none !important; /* 默认去掉下划线，保持干净 */
-  transition: all 0.3s ease; /* 增加变色时的平滑过渡感 */
-}
-
+/* --- 2. 悬停警示：朱砂红 (内外全局通用) --- */
 a:hover, .post-list li a:hover {
-  color: #9B1C26 !important; /* 鼠标悬停变朱砂红 */
+  color: #9B1C26 !important;
 }
 
-/* 4. 终极绝活：文章末尾自动加盖【党务调查科印】 */
+/* --- 3. 翻开卷宗 (内页专供)：宣纸 + 铅字黑 --- */
+/* 当网页探测到内部有 .post-header (文章头) 时，自动切换为内页模式 */
+body:has(.post-header) {
+  background-color: #F7F5F0 !important;
+  background-image: url("https://www.transparenttextures.com/patterns/rice-paper.png") !important;
+}
+
+/* 内页的所有文字切换为铅字灰黑 */
+body:has(.post-header) h1, 
+body:has(.post-header) h2, 
+body:has(.post-header) h3, 
+body:has(.post-header) h4, 
+body:has(.post-header) .site-title, 
+body:has(.post-header) a, 
+body:has(.post-header) p, 
+body:has(.post-header) span,
+body:has(.post-header) .post-meta,
+body:has(.post-header) li {
+  color: #2A2A2A !important;
+}
+
+/* 确保内页的悬停依然是朱砂红，不被上面覆盖 */
+body:has(.post-header) a:hover {
+  color: #9B1C26 !important;
+}
+
+/* --- 4. 自动盖章：文章末尾的繁体印章 (仅内页生效) --- */
 .post-content::after {
   content: "黨務調查科印";
   display: block;
-  writing-mode: vertical-rl; /* 真正的灵魂：汉字竖排显示！ */
-  color: #9B1C26;            /* 朱砂红印泥色 */
-  font-family: "STKaiti", "Kaiti", serif; /* 强制使用楷体，模拟印章雕刻 */
+  writing-mode: vertical-rl;
+  color: #9B1C26;
+  font-family: "STKaiti", "Kaiti", "BiauKai", serif; /* 繁体楷书模拟雕刻 */
   font-size: 20px;
   font-weight: bold;
-  letter-spacing: 4px;       /* 字间距拉开 */
+  letter-spacing: 4px;
   padding: 8px 12px;
-  border: 4px solid #9B1C26; /* 粗重的印章边框 */
-  border-radius: 4px;        /* 边缘微微圆润，不像电脑画的那么死板 */
-  margin: 60px 0 20px auto;  /* 自动跑到文章末尾的右下角 */
+  border: 4px solid #9B1C26;
+  border-radius: 4px;
+  margin: 60px 0 20px auto;
   width: fit-content;
-  opacity: 0.85;             /* 模拟印泥微微褪色的历史感 */
-  transform: rotate(-6deg);  /* 灵魂微调：模拟手工盖章时手抖的倾斜感！ */
-  box-shadow: 0 0 3px rgba(155, 28, 38, 0.4); /* 微微的印泥晕染效果 */
-}
-
-/* 5. 修复补丁：强制首页档案目录保持铅字黑 */
-ul.post-list h1, 
-ul.post-list h2, 
-ul.post-list h3, 
-.post-link {
-  color: #2A2A2A !important; 
+  opacity: 0.85;
+  transform: rotate(-6deg);
+  box-shadow: 0 0 3px rgba(155, 28, 38, 0.4);
 }
