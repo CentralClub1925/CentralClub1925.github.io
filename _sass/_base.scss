@@ -171,9 +171,11 @@ html, body {
   background-image: none !important;
 }
 
-/* 精准控制文字颜色，不再使用霸道的 * 号 */
-h1, h2, h3, h4, p, span, time, div {
+/* 强行统一字体，并用 400 强制卸下所有粗体！ */
+h1, h2, h3, h4, p, span, time, div, .post-list-heading {
   color: #fffffe !important;
+  font-family: "EB Garamond", Garamond, "Times New Roman", "Noto Serif TC", "SimSun", serif !important;
+  font-weight: 400 !important;
 }
 
 /* 链接在不悬停时是纯白 */
@@ -183,14 +185,9 @@ a, a:link, a:visited, .post-link {
   transition: color 0.3s ease;
 }
 
-/* 强制所有标题和文章列表使用相同的古典英文字体，并去掉粗体 */
-h1, h2, h3, h4, .post-link, .site-title {
-  font-family: "EB Garamond", Garamond, "Times New Roman", "Noto Serif TC", "SimSun", serif !important;
-  font-weight: normal !important; /* 卸下粗体，统一打字机质感 */
-}
-
 /* --- 2. 悬停警示：朱砂红波浪线 --- */
-a:hover, a:focus, .post-link:hover {
+a:hover, a:focus, .post-link:hover,
+a:hover *, .post-link:hover * {
   color: #9B1C26 !important;
 }
 
@@ -209,7 +206,8 @@ body:has(.post) * {
 
 /* --- 4. 保护红色印记 --- */
 /* 确保内页鼠标划过链接时，依然是红色 */
-body:has(.post) a:hover {
+body:has(.post) a:hover, 
+body:has(.post) a:hover * {
   color: #9B1C26 !important;
 }
 
