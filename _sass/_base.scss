@@ -230,3 +230,16 @@ body:has(.post) a:hover * {
   transform: rotate(-6deg);
   box-shadow: 0 0 3px rgba(155, 28, 38, 0.4);
 }
+
+/* 让徽章容器居中，并给下方标题腾出空间 */
+.site-emblem-container {
+  text-align: center;
+  margin-bottom: 20px; 
+}
+
+/* 锁定徽章的尺寸，防止太大 */
+.site-emblem {
+  width: 80px; 
+  height: auto;
+  display: inline-block; 
+}
